@@ -18,8 +18,10 @@ Go to tutorialspoint link below, but if you do this you will get errors because 
 https://www.tutorialspoint.com/reactjs/reactjs_environment_setup.htm  
 NOTE make the following changes
  * Replace the commands with using --no-optional parameter.... npm install --no-optional PACKAGE  
- * When you get to Step 5 - Set Compiler, Server and Loaders, you may need to set an absolute entry path. So if you have your project in home directory do /home/NAME/reactApp/main.js  
- * Also on step 5 look for loader:'babel' and replace with loader:'babel-loader'  
+ * When you get to Step 5 (Set Compiler, Server and Loaders), you need to set an absolute entry and output path. 
+   * Entry would be /home/reactjs/reactApp/main.js
+   * Output would be /home/reactjs/reactApp
+ * Also on step 5 look for loader:'babel' and replace with loader:'babel-loader'.
 
 If this is still not working try:
  * You may be using port 8080 for something else. Check using sudo lsof -i :8080 | grep LISTEN. If so change to another port  
