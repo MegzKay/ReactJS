@@ -1,5 +1,5 @@
-## INSTALLATION INSTRUCTIONS FOR ReactJS
-These are installation instructions on how to setup ReactJS. Majority of the instructions come from tutorialspoint. 
+## Installation instructions for ReactJS
+These are installation instructions on how to setup ReactJS for a test setup. Majority of the instructions come from tutorialspoint. 
 Other instructions came from me searching through Github and Stack Overflow
 
 ### Install Atom
