@@ -9,10 +9,7 @@ sudo apt-get install atom
 apm install language-babel
 
 ### Install NodeJS and NPM
-Go to tutorialspoint and follow their instructions:  
-https://www.tutorialspoint.com/nodejs/nodejs_environment_setup.htm  
-And then use:  
- * sudo apt-install npm  
+Install nodejs latest version here: https://nodejs.org/en/download/package-manager/
 ### Install Babel, Webpack and ReactJS  
 Go to tutorialspoint link below and follow the instructions but you need to make a few tweaks for it to work properly. 
 https://www.tutorialspoint.com/reactjs/reactjs_environment_setup.htm  
