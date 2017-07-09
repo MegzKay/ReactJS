@@ -14,7 +14,7 @@ Install nodejs latest version here: https://nodejs.org/en/download/package-manag
 Go to tutorialspoint link below and follow the instructions but you need to make a few tweaks for it to work properly. 
 https://www.tutorialspoint.com/reactjs/reactjs_environment_setup.htm  
 NOTE make the following changes
- * If using Ubuntu 16.04, installing the packages above will cause an error because the packages include fsevents which is for MACs only. These are optional files so to not include them, use the --no-optional parameter like so: npm install --no-optional PACKAGE  
+ * You may get an error regarding fsevents because these files are for MACs only. These are optional files so to not include them, use the --no-optional parameter like so: npm install --no-optional PACKAGE  
  * When you get to Step 5 (Set Compiler, Server and Loaders), you need to set an absolute entry and output path. 
    * Entry would be:  __dirname + '/main.js'
    * Output would be: __dirname
