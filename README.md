@@ -24,8 +24,9 @@ If this is still not working try:
  * You may be using port 8080 for something else. Check using sudo lsof -i :8080 | grep LISTEN. If so change to another port  
  * You may need to install legacy nodejs, if so use command sudo apt-get install nodejs-legacy  
 ### Install ReactRouter and ReactRouterDom
-npm install --no-optional react-router 
+npm install --no-optional react-router     
 npm install --no-optional react-router-dom
+
  * NOTE: With V4 you need to install react router dom  
  
 ### Bootstrap and jQuery
