@@ -2,17 +2,17 @@
 These are installation instructions on how to setup ReactJS for a test setup on Ubuntu. 
 
 ## Update Linux before installing anything
-Get updates into repository: sudo apt-get update
-Get upgrades from repository: sudo apt-get upgrade
+Get updates into repository: sudo apt-get update 
+Get upgrades from repository: sudo apt-get upgrade 
 
 ## Install Atom
-sudo add-apt-repository ppa:webupd8team/atom
-sudo apt-get update
-sudo apt-get install atom
-apm install language-babel
+sudo add-apt-repository ppa:webupd8team/atom 
+sudo apt-get update 
+sudo apt-get install atom 
+apm install language-babel 
 
 ## Install NodeJS and NPM
-sudo apt-get install nodejs
+sudo apt-get install nodejs 
 sudo apt-get install npm
 
 ## Create ReactJS Project
@@ -27,9 +27,49 @@ npm install --save-dev babel-core babel-loader babel-preset-env babel-preset-rea
 ### Set up Folders
 mkdir FOLDER_NAME/App 
 touch FOLDER_NAME/App/{index.html,main.css,index.js} 
+touch FOLDER_NAME/App/Components/App.js
 mkdir FOLDER_NAME/App/Components 
 
+#### index.html
+<!DOCTYPE html>
+ <html lang="en">
+   <head>
+     <meta charset="UTF-8">
+     <title>ToDo App</title>
+   </head>
+   <body>
+     <div id="app"></div>
+   </body>
+ </html> 
+ 
 
+#### index.js
+var React = require('react');
+var ReactDOM = require('react-dom');
+require('./index.css');
+var App = require('./components/App');
+
+
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('app')
+);
+
+
+#### App.js
+var React = require('react');
+import TodoList from './TodoList'
+import AddItem from './AddItem'
+
+class App extends React.Component{
+	render(){
+		return(<div>Hello World!</div>)
+	}
+	
+}
+
+module.exports = App;
 
 ### Edit Package.json
 To package.json add add: 
