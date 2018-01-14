@@ -36,90 +36,75 @@ mkdir FOLDER_NAME/App/Components
 #### index.html
 <!DOCTYPE html> 
 
- <html lang="en"> 
-	
-   <head> 
-     <meta charset="UTF-8"> 
-	
-     <title>ToDo App</title> 
-     
-   </head> 
-   
-   <body> 
-	
-     <div id="app"></div> 
-     
-   </body> 
-   
- </html>  
+	<html lang="en"> 
+	<head> 
+		<meta charset="UTF-8"> 
+		<title>ToDo App</title> 
+	</head> 
+	<body> 
+		<div id="app"></div> 
+	</body> 
+	</html>  
  
 
 #### index.js
-var React = require('react'); 
+	var React = require('react'); 
+	var ReactDOM = require('react-dom'); 
+	require('./index.css'); 
+	var App = require('./components/App'); 
 
-var ReactDOM = require('react-dom'); 
-
-require('./index.css'); 
-
-var App = require('./components/App'); 
-
-
-ReactDOM.render(  <App />, document.getElementById('app') ); 
+	ReactDOM.render(  <App />, document.getElementById('app') ); 
 
 
 #### App.js
-var React = require('react'); 
+	var React = require('react'); 
+	import TodoList from './TodoList'  
+	import AddItem from './AddItem' 
 
-import TodoList from './TodoList'  
-
-import AddItem from './AddItem' 
-
-
-class App extends React.Component{ 
-
-	render(){ 
-	
-		return(<div>Hello World!</div>) 
-		
+	class App extends React.Component{ 
+		render(){ 
+			return(<div>Hello World!</div>) 
+		} 	
 	} 
-	
-} 
 
-module.exports = App; 
+	module.exports = App; 
 
 ### Edit Package.json
 To package.json add add: 
-"babel": { 
-	"presets": ["env", "react"] 
-}, 
+
+	"babel": { 
+		"presets": ["env", "react"] 
+	}, 
+
 And change scripts to: 
-"scripts": { 
-    "create": "webpack" 
-  }, 
+
+	"scripts": { 
+		"create": "webpack" 
+	}, 
 
 ### Create webpack.config.js 
-touch FOLDER_NAME/webpack.config.js 
-var path = require('path'); 
-var HtmlWebpackPlugin = require('html-webpack-plugin');  
+	touch FOLDER_NAME/webpack.config.js 
+	var path = require('path'); 
+	var HtmlWebpackPlugin = require('html-webpack-plugin');  
 
-module.exports = { 
-   entry: './app/index.js', 
-   output: { 
-     path: path.resolve(__dirname, 'dist'), 
-     filename: 'index_bundle.js' 
-   }, 
-   module: { 
-     rules: [ 
-       { test: /\.(js)$/, use: 'babel-loader' }, 
-       { test: /\.css$/, use: [ 'style-loader', 'css-loader' ]} 
-     ] 
-   }, 
-   plugins: [
-     new HtmlWebpackPlugin({
-       template: 'app/index.html'
-     })
-   ]
- }; 
+	module.exports = { 
+	   entry: './app/index.js', 
+	   output: { 
+	     path: path.resolve(__dirname, 'dist'), 
+	     filename: 'index_bundle.js' 
+	   }, 
+	   module: { 
+	     rules: [ 
+	       { test: /\.(js)$/, use: 'babel-loader' }, 
+	       { test: /\.css$/, use: [ 'style-loader', 'css-loader' ]} 
+	     ] 
+	   }, 
+	   plugins: [
+	     new HtmlWebpackPlugin({
+	       template: 'app/index.html'
+	     })
+	   ]
+	 }; 
  
  
 ### Create .gitignore
@@ -132,9 +117,9 @@ npm run create
 
 Go back into package.json and change scripts to: 
 
-"scripts": {
-	"start": "webpack-dev-server --open"
-}, 
+	"scripts": {
+		"start": "webpack-dev-server --open"
+	}, 
 
 ### And now to begin
 This will start running the server. Also because web added the above script, whenever you save a file, it will automatically refresh the webpage
