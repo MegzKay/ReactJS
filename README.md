@@ -26,43 +26,61 @@ npm install --save-dev babel-core babel-loader babel-preset-env babel-preset-rea
 
 ### Set up Folders
 mkdir FOLDER_NAME/App 
+
 touch FOLDER_NAME/App/{index.html,main.css,index.js} 
+
 touch FOLDER_NAME/App/Components/App.js
+
 mkdir FOLDER_NAME/App/Components 
 
 #### index.html
 <!DOCTYPE html> 
+
  <html lang="en"> 
+	
    <head> 
      <meta charset="UTF-8"> 
+	
      <title>ToDo App</title> 
+     
    </head> 
+   
    <body> 
+	
      <div id="app"></div> 
+     
    </body> 
+   
  </html>  
  
 
 #### index.js
 var React = require('react'); 
+
 var ReactDOM = require('react-dom'); 
+
 require('./index.css'); 
+
 var App = require('./components/App'); 
 
-ReactDOM.render( 
-  <App />, 
-  document.getElementById('app') 
-); 
+
+ReactDOM.render(  <App />, document.getElementById('app') ); 
 
 
 #### App.js
 var React = require('react'); 
+
 import TodoList from './TodoList'  
+
 import AddItem from './AddItem' 
 
+
 class App extends React.Component{ 
+
 	render(){ 
+	
 		return(<div>Hello World!</div>) 
+		
 	} 
 	
 } 
