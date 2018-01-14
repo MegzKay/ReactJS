@@ -1,6 +1,9 @@
-## Installation instructions for ReactJS
-These are installation instructions on how to setup ReactJS for a test setup. Majority of the instructions come from tutorialspoint. 
-Other instructions came from me searching through Github and Stack Overflow
+## Installation instructions for ReactJS on Ubuntu
+These are installation instructions on how to setup ReactJS for a test setup on Ubuntu. 
+
+### Update Linux before installing anything
+Get updates into repository: sudo apt-get update
+Get upgrades from repository: sudo apt-get upgrade
 
 ### Install Atom
 sudo add-apt-repository ppa:webupd8team/atom
@@ -9,27 +12,73 @@ sudo apt-get install atom
 apm install language-babel
 
 ### Install NodeJS and NPM
-Install nodejs latest version here: https://nodejs.org/en/download/package-manager/
+sudo apt-get install nodejs
+sudo apt-get install npm
+
 ### Install Babel, Webpack and ReactJS  
-Go to tutorialspoint link below and follow the instructions but you need to make a few tweaks for it to work properly. 
-https://www.tutorialspoint.com/reactjs/reactjs_environment_setup.htm  
-NOTE make the following changes
- * You may get an error regarding fsevents because these files are for MACs only. These are optional files so to not include them, use the --no-optional parameter like so: npm install --no-optional PACKAGE  
- * When you get to Step 5 (Set Compiler, Server and Loaders), you need to set an absolute entry and output path. 
-   * Entry would be:  __dirname + '/main.js'
-   * Output would be: __dirname
- * Also on step 5 look for loader:'babel' and replace with loader:'babel-loader'.
+mkdir FOLDER_NAME
+cd FOLDER_NAME
 
-If this is still not working try:
- * You may be using port 8080 for something else. Check using sudo lsof -i :8080 | grep LISTEN. If so change to another port  
- * You may need to install legacy nodejs, if so use command sudo apt-get install nodejs-legacy  
-### Install ReactRouter and ReactRouterDom
-npm install --no-optional react-router     
-npm install --no-optional react-router-dom
+npm init 
+npm install --save react react-dom 
+npm install --save-dev babel-core babel-loader babel-preset-env babel-preset-react css-loader style-loader html-webpack-plugin webpack webpack-dev-server 
 
- * NOTE: With V4 you need to install react router dom  
+mkdir FOLDER_NAME/App 
+touch FOLDER_NAME/App/{index.html,main.css,index.js} 
+mkdir FOLDER_NAME/App/Components 
+
+
+To package.json add add: 
+"babel": { 
+	"presets": ["env", "react"] 
+}, 
+And change scripts to: 
+"scripts": { 
+    "create": "webpack" 
+  }, 
+
+
+touch FOLDER_NAME/webpack.config.js 
+var path = require('path'); 
+var HtmlWebpackPlugin = require('html-webpack-plugin');  
+
+module.exports = { 
+   entry: './app/index.js', 
+   output: { 
+     path: path.resolve(__dirname, 'dist'), 
+     filename: 'index_bundle.js' 
+   }, 
+   module: { 
+     rules: [ 
+       { test: /\.(js)$/, use: 'babel-loader' }, 
+       { test: /\.css$/, use: [ 'style-loader', 'css-loader' ]} 
+     ] 
+   }, 
+   plugins: [
+     new HtmlWebpackPlugin({
+       template: 'app/index.html'
+     })
+   ]
+ }; 
+  
+touch FOLDER_Name/.gitignore
+Include dist and node_modules as these two larger folders do not need to be uploaded to github 
+
+
+npm run create 
+
+Go back into package.json and change scripts to: 
+
+"scripts": {
+	"start": "webpack-dev-server --open"
+}, 
+
+
+ * NOTE: With V4 you need to install react router dom   
  
 ### Bootstrap and jQuery
 npm install --no-optional jquery
 npm install --no-optional bootstrap@3
  * Both will be located in node_modules/jquery and node_modules/bootstrap respectively 
+ 
+* If you get an error regarding fsevents, that is because these files are for MACs only. These are optional files so to not include them, use the --no-optional parameter like so: npm install --no-optional PACKAGE. I found after I did an update, I no longer had to do this  
